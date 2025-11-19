@@ -29,6 +29,7 @@ namespace CMS_Connector.Repository
             MoveRoutedDocuments(routedDocuments);
         }
 
+        [Obsolete]
         private void MoveRoutedDocuments(List<EmailDocument> routedDocuments)
         {
             using (SPDocumentCopyService.Copy spDocumentCopyService = new SPDocumentCopyService.Copy())
@@ -73,7 +74,7 @@ namespace CMS_Connector.Repository
                         if (myCopyUint != 0 || copyResult.ErrorCode != SPDocumentCopyService.CopyErrorCode.Success)
                         {
                             Logger logger = LogManager.GetCurrentClassLogger();
-                            logger.Log(LogLevel.Error, "CopyRoutedDocuments: Exception occurred when copying a routed document", String.Concat(myCopyResultArray));
+                            logger.Log(LogLevel.Error, "CopyRoutedDocuments: Exception occurred when copying a routed document", myCopyResultArray);
                         }
 
                         if (document.RoutedSuccessfully && document.RoutedDeletedSuccessfully)

@@ -19,6 +19,7 @@ namespace CMS_Connector.Repository
             LoadConfig();
         }
 
+        [Obsolete]
         public void LoadMail(List<Email> emails)
         {
             using (SPDocumentCopyService.Copy spDocumentCopyService = new SPDocumentCopyService.Copy())
@@ -56,7 +57,7 @@ namespace CMS_Connector.Repository
                                 if (myCopyUint != 0)
                                 {
                                     Logger logger = LogManager.GetCurrentClassLogger();
-                                    logger.Log(LogLevel.Error, String.Concat(myCopyResultArray));
+                                    logger.Log(LogLevel.Error, myCopyResultArray);
                                 }
                             }
                             catch (Exception e)
@@ -78,7 +79,7 @@ namespace CMS_Connector.Repository
                             if (myCopyUint != 0)
                             {
                                 Logger logger = LogManager.GetCurrentClassLogger();
-                                logger.Log(LogLevel.Error, String.Concat(myCopyResultArray));
+                                logger.Log(LogLevel.Error, myCopyResultArray);
                             }
                         }
                         catch (Exception e)
